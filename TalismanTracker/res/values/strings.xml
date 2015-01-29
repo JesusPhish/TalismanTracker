@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Talisman Tracker</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="demo_button">Demo</string>
+    
+    <string name="increase_button">+</string>
+	<string name="decrease_button">-</string>
+	
+	<string name="class_string">Class</string>
+	<string name="strength_string">Strength</string>
+	<string name="craft_string">Craft</string>
+	<string name="life_string">Life</string>
+	<string name="gold_string">Gold</string>
+	<string name="fate_string">Fate</string>
+	<string name="starting_string">Starting Zone</string>
+	<string name="alignment_string">Alignment</string>
+
+    <string-array name="class_list">
+        <item>Assassin</item>
+        <item>Druid</item>
+        <item>Dwarf</item>
+        <item>Elf</item>
+        <item>Ghoul</item>
+        <item>Minstrel</item>
+        <item>Monk</item>
+        <item>Priest</item>
+        <item>Prophetess</item>
+        <item>Sorceress</item>
+        <item>Thief</item>
+        <item>Troll</item>
+        <item>Warrior</item>
+        <item>Wizard</item>
+    </string-array>
+    
+    <string-array name="alignment">
+        <item>Good</item>
+        <item>Neutral</item>
+        <item>Evil</item>
+    </string-array>
+</resources>

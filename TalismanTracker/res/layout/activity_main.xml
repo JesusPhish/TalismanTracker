@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:orientation="vertical" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_marginLeft="5pt"
+        android:layout_marginRight="5pt"
+        android:layout_marginTop="3pt">
+        
+	    <Spinner 
+   			android:layout_width="match_parent"
+    		android:layout_height="match_parent"
+    		android:id="@+id/spnClassMenu"
+    		android:text="Class List" >
+		</Spinner>
+		
+        <TextView 
+            android:layout_height="wrap_content" 
+			android:layout_width="match_parent" 
+			android:layout_marginLeft="5pt" 
+			android:layout_marginRight="5pt" 
+			android:textSize="8pt" 
+			android:layout_marginTop="3pt" 
+			android:id="@+id/tvStr" 
+			android:text=""
+			android:gravity="center_horizontal"    
+	        />
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Str +"
+            android:textSize="8pt"
+            android:id="@+id/btnAddStr">
+        </Button>
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Str -"
+            android:textSize="8pt"
+            android:id="@+id/btnSubStr">
+        </Button>
+        
+        <TextView
+            android:id="@+id/tvCft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginTop="3pt"
+            android:gravity="center_horizontal"
+            android:textSize="8pt" 
+            />
+        
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Cft +"
+            android:textSize="8pt"
+            android:id="@+id/btnAddCft">
+        </Button>
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Cft -"
+            android:textSize="8pt"
+            android:id="@+id/btnSubCft">  
+		</Button>
+
+        <TextView
+            android:id="@+id/tvLife"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginTop="3pt"
+            android:gravity="center_horizontal"
+            android:textSize="8pt" 
+            />
+        
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Life +"
+            android:textSize="8pt"
+            android:id="@+id/btnAddLife">
+        </Button>
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Life -"
+            android:textSize="8pt"
+            android:id="@+id/btnSubLife">          
+        </Button>
+        
+        <TextView
+            android:id="@+id/tvFate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginTop="3pt"
+            android:gravity="center_horizontal"
+            android:textSize="8pt" 
+            />
+        
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Fate +"
+            android:textSize="8pt"
+            android:id="@+id/btnAddFate">
+        </Button>
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Fate -"
+            android:textSize="8pt"
+            android:id="@+id/btnSubFate">          
+        </Button> 
+</LinearLayout>
