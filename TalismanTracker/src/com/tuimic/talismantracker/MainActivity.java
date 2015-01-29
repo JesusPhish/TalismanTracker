@@ -1,7 +1,6 @@
 package com.tuimic.talismantracker;
 
 import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,10 +17,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+//TODO remove unused imports
+//TODO insert random selection of new Adventurer class
+//TODO get rid of string warnings and other warnings
+
 public class MainActivity extends Activity implements OnClickListener, OnItemSelectedListener {
 	
 	/**
-	 * These should go into their own class
+	 * These are the basic stats for every character class in Talisman. 
 	 */
 	String name;
 	int baseStr = 4;
@@ -38,10 +42,8 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 	String startingZone = "test";
 	
 	String alignment = "test";
-	/**
-	 * End of that class
-	 */
-	
+
+	//TODO - add a button for the following features: gold -> life, gold -> fate, full fate replenish. 
 	Button btnAddStr, btnSubStr, btnAddCft, btnSubCft, btnAddLife, btnSubLife, btnAddFate, btnSubFate;
 	
 	TextView tvStr, tvCft, tvLife, tvFate;
@@ -53,6 +55,12 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 	String class_selected;
 	int lastSelected = 0;
 	
+	/**
+	 * Function Name - updateInfo
+	 * 
+	 * Parse through the list of available characters until the selected character is found.
+	 * Updates display texts and current values.
+	 */
 	public void updateInfo(){
 		boolean found = false;
 		int i = 0;
@@ -86,7 +94,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		// Create a list of the classes
 		classListNames = getResources().getStringArray(R.array.class_list);
 		
-		//generateAdventurerData(classListNames);
+		//TODO replace this with some sort of database/put it in it's own file
 		classListCharacters[0] = new Adventurer(classListNames[0], 3, 3, 4, 3, 1, "City", "Evil"); //assassin
 		classListCharacters[1] = new Adventurer(classListNames[1], 2, 4, 4, 4, 1, "Forest", "Neutral"); //druid
 		classListCharacters[2] = new Adventurer(classListNames[2], 3, 3, 5, 5, 1, "Crags", "Neutral"); //dwarf
@@ -111,6 +119,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		classMenu.setAdapter(adapter);
 		classMenu.setOnItemSelectedListener(this);
 
+		//link buttons to the xml view button fields
 		btnAddStr = (Button) findViewById(R.id.btnAddStr);
 		btnSubStr = (Button) findViewById(R.id.btnSubStr);
 		btnAddCft = (Button) findViewById(R.id.btnAddCft);
@@ -120,12 +129,13 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		btnAddFate = (Button) findViewById(R.id.btnAddFate);
 		btnSubFate = (Button) findViewById(R.id.btnSubFate);
 		
+		//link text views to teh xml view text view fields
 		tvStr = (TextView) findViewById(R.id.tvStr);
 		tvCft = (TextView) findViewById(R.id.tvCft);
 		tvLife = (TextView) findViewById(R.id.tvLife);
 		tvFate= (TextView) findViewById(R.id.tvFate);
 		
-		// set a listener
+		// set a listener for each button
 		btnAddStr.setOnClickListener(this);
 		btnSubStr.setOnClickListener(this);
 		btnAddCft.setOnClickListener(this);
@@ -146,7 +156,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 				tvStr.setText("Str: " + currStr);
 				break;
 			case R.id.btnSubStr:
-				if(currStr > 1 ){ //value cannot be less than 1
+				if(currStr > 1 ){ //value cannot be less than 1 as per the rules of the game
 					currStr--;
 					tvStr.setText("Str: " + currStr);
 				}
@@ -156,7 +166,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 				tvCft.setText("Cft: " + currCft);
 				break;
 			case R.id.btnSubCft:
-				if(currCft > 1){	//value cannot be less than 1
+				if(currCft > 1){	//value cannot be less than 1 as per the rules of the game
 					currCft--;
 					tvCft.setText("Cft: " + currCft);
 				}
@@ -189,15 +199,20 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, final int position,
 			long id) {
-		// TODO Auto-generated method stub
 		
+		/**
+		 * to avoid potentially endless loops of the user choosing to not select a new character
+		 * compare the selected character to the last selected one based on array position
+		 * if they match, just return out of this entire segement.
+		 */
 		if(lastSelected == position){
-			System.out.println("the objects are the same");
+			System.out.println("the objects are the same"); //for breakpoints
 			return;
 		}
 
 		class_selected = parent.getItemAtPosition(position).toString();
 		
+		// prompt the user that picking a new character resets current stats
 		Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
 		alertDialog.setTitle("Warning!");
 		alertDialog.setMessage("Selecting a new character will reset all stats. Is this ok?");
@@ -206,7 +221,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
+				// store the location of the currently selected character for future use and update the view
 				lastSelected = position;
 				updateInfo();
 			}
@@ -215,7 +230,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
+				//set the menu selection to the last selected class to keep the display valid
 				classMenu.setSelection(lastSelected);
 			}
 		});
@@ -230,11 +245,19 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
-		// TODO Auto-generated method stub
-		
+		//do nothing
 	}
 }
 
+/**
+ * Adventurer class
+ * 
+ * Adventurers are the names of the characters that players can chose from in Talisman. 
+ * 
+ * Used by MainActivity
+ * @author Stephen
+ *
+ */
 class Adventurer {
 	String name;
 	int baseStr = 0;
@@ -246,6 +269,17 @@ class Adventurer {
 	String startingZone = "";	
 	String alignment = "";
 	
+	/**
+	 *
+	 * @param nameIn - The name of the Adventurer
+	 * @param str - The Adventurer starting strength value
+	 * @param cft - The Adventurer starting craft value
+	 * @param life - The Adventurer starting life value
+	 * @param fate - The Adventurer starting fate value
+	 * @param goldIn - The Adventurer starting gold value
+	 * @param startingZoneIn - The zone on the board in which the Adventurer will start
+	 * @param alignmentIn - The Adventurer alignment value (Good, Neutral, Evil)
+	 */
 	Adventurer(String nameIn, int str, int cft, int life, int fate, int goldIn, String startingZoneIn, String alignmentIn){
 		name = nameIn;
 		baseStr = str;
