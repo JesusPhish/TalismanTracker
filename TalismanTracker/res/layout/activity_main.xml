@@ -21,7 +21,7 @@
 			android:layout_width="match_parent" 
 			android:layout_marginLeft="5pt" 
 			android:layout_marginRight="5pt" 
-			android:textSize="8pt" 
+			android:textSize="4pt" 
 			android:layout_marginTop="3pt" 
 			android:id="@+id/tvStr" 
 			android:text=""
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="Str +"
-            android:textSize="8pt"
+            android:textSize="4pt"
             android:id="@+id/btnAddStr">
         </Button>
         <Button 
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="Str -"
-            android:textSize="8pt"
+            android:textSize="4pt"
             android:id="@+id/btnSubStr">
         </Button>
         
@@ -52,7 +52,7 @@
             android:layout_marginRight="5pt"
             android:layout_marginTop="3pt"
             android:gravity="center_horizontal"
-            android:textSize="8pt" 
+            android:textSize="4pt" 
             />
         
         <Button 
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="Cft +"
-            android:textSize="8pt"
+            android:textSize="4pt"
             android:id="@+id/btnAddCft">
         </Button>
         <Button 
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="Cft -"
-            android:textSize="8pt"
+            android:textSize="4pt"
             android:id="@+id/btnSubCft">  
 		</Button>
 
@@ -80,7 +80,7 @@
             android:layout_marginRight="5pt"
             android:layout_marginTop="3pt"
             android:gravity="center_horizontal"
-            android:textSize="8pt" 
+            android:textSize="4pt" 
             />
         
         <Button 
@@ -88,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="Life +"
-            android:textSize="8pt"
+            android:textSize="4pt"
             android:id="@+id/btnAddLife">
         </Button>
         <Button 
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="Life -"
-            android:textSize="8pt"
+            android:textSize="4pt"
             android:id="@+id/btnSubLife">          
         </Button>
         
@@ -108,7 +108,7 @@
             android:layout_marginRight="5pt"
             android:layout_marginTop="3pt"
             android:gravity="center_horizontal"
-            android:textSize="8pt" 
+            android:textSize="4pt" 
             />
         
         <Button 
@@ -116,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="Fate +"
-            android:textSize="8pt"
+            android:textSize="4pt"
             android:id="@+id/btnAddFate">
         </Button>
         <Button 
@@ -124,7 +124,61 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:text="Fate -"
-            android:textSize="8pt"
+            android:textSize="4pt"
             android:id="@+id/btnSubFate">          
         </Button> 
+        
+        <TextView 
+            android:id="@+id/tvGold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginTop="3pt"
+            android:gravity="center_horizontal"
+            android:textSize="4pt" 
+            />
+        
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Gold +"
+            android:textSize="4pt"
+            android:id="@+id/btnAddGold">
+        </Button>
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Gold -"
+            android:textSize="4pt"
+            android:id="@+id/btnSubGold">          
+        </Button>
+        
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Gold for Life"
+            android:textSize="4pt"
+            android:id="@+id/btnGoldToLife">          
+        </Button> 
+        <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Gold for Fate"
+            android:textSize="4pt"
+            android:id="@+id/btnGoldToFate">          
+        </Button> 
+	    <Button 
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Replenish Fate"
+            android:textSize="4pt"
+            android:id="@+id/btnFullFate">          
+        </Button> 
+            "
 </LinearLayout>

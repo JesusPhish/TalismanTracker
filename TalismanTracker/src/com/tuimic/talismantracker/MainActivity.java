@@ -1,12 +1,15 @@
 package com.tuimic.talismantracker;
 
 import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -38,15 +41,15 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 	int currLife = baseLife;
 	int currFate = baseFate;
 	
-	int gold = 4;
+	int gold = 1;
 	String startingZone = "test";
 	
 	String alignment = "test";
 
 	//TODO - add a button for the following features: gold -> life, gold -> fate, full fate replenish. 
-	Button btnAddStr, btnSubStr, btnAddCft, btnSubCft, btnAddLife, btnSubLife, btnAddFate, btnSubFate;
+	Button btnAddStr, btnSubStr, btnAddCft, btnSubCft, btnAddLife, btnSubLife, btnAddFate, btnSubFate, btnAddGold, btnSubGold, btnGoldToFate, btnGoldToLife, btnFullFate;
 	
-	TextView tvStr, tvCft, tvLife, tvFate;
+	TextView tvStr, tvCft, tvLife, tvFate, tvGold;
 
 	Spinner classMenu;
 	String [] classListNames;
@@ -76,6 +79,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 				tvCft.setText("Cft: " + classListCharacters[i].baseCft);
 				tvLife.setText("Life: " + classListCharacters[i].baseLife);
 				tvFate.setText("Fate: " + classListCharacters[i].baseFate);
+				tvGold.setText("Gold: " + classListCharacters[i].gold);
 				
 				currStr = classListCharacters[i].baseStr;
 				currCft = classListCharacters[i].baseCft;
@@ -128,12 +132,18 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		btnSubLife = (Button) findViewById(R.id.btnSubLife);
 		btnAddFate = (Button) findViewById(R.id.btnAddFate);
 		btnSubFate = (Button) findViewById(R.id.btnSubFate);
+		btnAddGold = (Button) findViewById(R.id.btnAddGold);
+		btnSubGold = (Button) findViewById(R.id.btnSubGold);
+		btnGoldToLife = (Button) findViewById(R.id.btnGoldToLife);
+		btnGoldToFate = (Button) findViewById(R.id.btnGoldToFate);
+		btnFullFate = (Button) findViewById(R.id.btnFullFate);
 		
-		//link text views to teh xml view text view fields
+		//link text views to the xml view text view fields
 		tvStr = (TextView) findViewById(R.id.tvStr);
 		tvCft = (TextView) findViewById(R.id.tvCft);
 		tvLife = (TextView) findViewById(R.id.tvLife);
-		tvFate= (TextView) findViewById(R.id.tvFate);
+		tvFate = (TextView) findViewById(R.id.tvFate);
+		tvGold = (TextView) findViewById(R.id.tvGold);
 		
 		// set a listener for each button
 		btnAddStr.setOnClickListener(this);
@@ -144,6 +154,11 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		btnSubLife.setOnClickListener(this);
 		btnAddFate.setOnClickListener(this);
 		btnSubFate.setOnClickListener(this);
+		btnAddGold.setOnClickListener(this);
+		btnSubGold.setOnClickListener(this);
+		btnGoldToLife.setOnClickListener(this);
+		btnGoldToFate.setOnClickListener(this);
+		btnFullFate.setOnClickListener(this);
 	}
 	
 	@Override
@@ -191,6 +206,35 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 					tvFate.setText("Fate: " + currFate);
 				}
 				break;
+			case R.id.btnAddGold:
+				gold++;
+				tvGold.setText("Gold: " + gold);
+				break;
+			case R.id.btnSubGold:
+				if(gold > 0){
+					gold--;
+					tvGold.setText("Gold: " + gold);
+				}
+				break;
+			case R.id.btnGoldToFate:
+				if(gold > 0){
+					gold--;
+					currFate++;
+					tvGold.setText("Gold: " + gold);
+					tvFate.setText("Fate: " + currFate);
+				}
+				break;
+			case R.id.btnGoldToLife:
+				if(gold > 0){
+					gold--;
+					currLife++;
+					tvGold.setText("Gold: " + gold);
+					tvLife.setText("Life: " + currLife);
+				}
+				break;
+			case R.id.btnFullFate:
+				currFate = baseFate;
+				tvFate.setText("Fate: " + currFate);
 			default:
 				break;
 		}
@@ -203,7 +247,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		/**
 		 * to avoid potentially endless loops of the user choosing to not select a new character
 		 * compare the selected character to the last selected one based on array position
-		 * if they match, just return out of this entire segement.
+		 * if they match, just return out of this entire segment.
 		 */
 		if(lastSelected == position){
 			System.out.println("the objects are the same"); //for breakpoints
@@ -247,7 +291,27 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 	public void onNothingSelected(AdapterView<?> parent) {
 		//do nothing
 	}
-}
+	
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_about:
+			Toast.makeText(this, "Talisman Tracker created by Stephen Boylan", Toast.LENGTH_SHORT).show();
+			break;
+		default:
+			break;
+		}
+		
+		return true;
+	}
+	
+} //end of main activity
 
 /**
  * Adventurer class
@@ -265,7 +329,7 @@ class Adventurer {
 	int baseLife = 0;
 	int baseFate = 0;
 	
-	int gold = 1;
+	int gold = 0;
 	String startingZone = "";	
 	String alignment = "";
 	
