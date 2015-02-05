@@ -17,7 +17,7 @@
 	<string name="fate_string">Fate</string>
 	<string name="starting_string">Starting Zone</string>
 	<string name="alignment_string">Alignment</string>
-
+	
     <string-array name="class_list">
         <item>Assassin</item>
         <item>Druid</item>

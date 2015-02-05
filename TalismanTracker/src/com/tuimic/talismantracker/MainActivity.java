@@ -75,11 +75,11 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 			if(class_selected.equals(classListCharacters[i].name)){
 				found = true;
 				//set the variables of this instance to that class
-				tvStr.setText("Str: " + classListCharacters[i].baseStr);
-				tvCft.setText("Cft: " + classListCharacters[i].baseCft);
-				tvLife.setText("Life: " + classListCharacters[i].baseLife);
-				tvFate.setText("Fate: " + classListCharacters[i].baseFate);
-				tvGold.setText("Gold: " + classListCharacters[i].gold);
+				tvStr.setText("" + classListCharacters[i].baseStr);
+				tvCft.setText("" + classListCharacters[i].baseCft);
+				tvLife.setText("" + classListCharacters[i].baseLife);
+				tvFate.setText("" + classListCharacters[i].baseFate);
+				tvGold.setText("" + classListCharacters[i].gold);
 				
 				currStr = classListCharacters[i].baseStr;
 				currCft = classListCharacters[i].baseCft;
@@ -93,7 +93,7 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.layouta);
 		
 		// Create a list of the classes
 		classListNames = getResources().getStringArray(R.array.class_list);
@@ -134,9 +134,9 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		btnSubFate = (Button) findViewById(R.id.btnSubFate);
 		btnAddGold = (Button) findViewById(R.id.btnAddGold);
 		btnSubGold = (Button) findViewById(R.id.btnSubGold);
-		btnGoldToLife = (Button) findViewById(R.id.btnGoldToLife);
-		btnGoldToFate = (Button) findViewById(R.id.btnGoldToFate);
-		btnFullFate = (Button) findViewById(R.id.btnFullFate);
+//		btnGoldToLife = (Button) findViewById(R.id.btnGoldToLife);
+//		btnGoldToFate = (Button) findViewById(R.id.btnGoldToFate);
+//		btnFullFate = (Button) findViewById(R.id.btnFullFate);
 		
 		//link text views to the xml view text view fields
 		tvStr = (TextView) findViewById(R.id.tvStr);
@@ -156,9 +156,9 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		btnSubFate.setOnClickListener(this);
 		btnAddGold.setOnClickListener(this);
 		btnSubGold.setOnClickListener(this);
-		btnGoldToLife.setOnClickListener(this);
-		btnGoldToFate.setOnClickListener(this);
-		btnFullFate.setOnClickListener(this);
+//		btnGoldToLife.setOnClickListener(this);
+//		btnGoldToFate.setOnClickListener(this);
+//		btnFullFate.setOnClickListener(this);
 	}
 	
 	@Override
@@ -168,73 +168,73 @@ public class MainActivity extends Activity implements OnClickListener, OnItemSel
 		switch (v.getId()){
 			case R.id.btnAddStr:
 				this.currStr++;
-				tvStr.setText("Str: " + currStr);
+				tvStr.setText("" + currStr);
 				break;
 			case R.id.btnSubStr:
 				if(currStr > 1 ){ //value cannot be less than 1 as per the rules of the game
 					currStr--;
-					tvStr.setText("Str: " + currStr);
+					tvStr.setText("" + currStr);
 				}
 				break;
 			case R.id.btnAddCft:
 				currCft++;
-				tvCft.setText("Cft: " + currCft);
+				tvCft.setText("" + currCft);
 				break;
 			case R.id.btnSubCft:
 				if(currCft > 1){	//value cannot be less than 1 as per the rules of the game
 					currCft--;
-					tvCft.setText("Cft: " + currCft);
+					tvCft.setText("" + currCft);
 				}
 				break;
 			case R.id.btnAddLife:
 				currLife++;
-				tvLife.setText("Life: " + currLife);
+				tvLife.setText("" + currLife);
 				break;
 			case R.id.btnSubLife:
 				if(currLife > 0){
 					currLife--;
-					tvLife.setText("Life:" + currLife);
+					tvLife.setText("" + currLife);
 				}
 				break;
 			case R.id.btnAddFate:
 				currFate++;
-				tvFate.setText("Fate: " + currFate);
+				tvFate.setText("" + currFate);
 				break;
 			case R.id.btnSubFate:
 				if(currFate > 0){
 					currFate--;
-					tvFate.setText("Fate: " + currFate);
+					tvFate.setText("" + currFate);
 				}
 				break;
 			case R.id.btnAddGold:
 				gold++;
-				tvGold.setText("Gold: " + gold);
+				tvGold.setText("" + gold);
 				break;
 			case R.id.btnSubGold:
 				if(gold > 0){
 					gold--;
-					tvGold.setText("Gold: " + gold);
+					tvGold.setText("" + gold);
 				}
 				break;
-			case R.id.btnGoldToFate:
-				if(gold > 0){
-					gold--;
-					currFate++;
-					tvGold.setText("Gold: " + gold);
-					tvFate.setText("Fate: " + currFate);
-				}
-				break;
-			case R.id.btnGoldToLife:
-				if(gold > 0){
-					gold--;
-					currLife++;
-					tvGold.setText("Gold: " + gold);
-					tvLife.setText("Life: " + currLife);
-				}
-				break;
-			case R.id.btnFullFate:
-				currFate = baseFate;
-				tvFate.setText("Fate: " + currFate);
+//			case R.id.btnGoldToFate:
+//				if(gold > 0){
+//					gold--;
+//					currFate++;
+//					tvGold.setText("Gold: " + gold);
+//					tvFate.setText("Fate: " + currFate);
+//				}
+//				break;
+//			case R.id.btnGoldToLife:
+//				if(gold > 0){
+//					gold--;
+//					currLife++;
+//					tvGold.setText("Gold: " + gold);
+//					tvLife.setText("Life: " + currLife);
+//				}
+//				break;
+//			case R.id.btnFullFate:
+//				currFate = baseFate;
+//				tvFate.setText("Fate: " + currFate);
 			default:
 				break;
 		}

@@ -3,6 +3,13 @@
     package="com.tuimic.talismantracker"
     android:versionCode="1"
     android:versionName="1.0" >
+    
+    <supports-screens 
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:anyDensity="true"
+        />
 
     <uses-sdk
         android:minSdkVersion="8"
